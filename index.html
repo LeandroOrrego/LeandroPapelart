@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es-PY" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papelart - Papelería Creativa</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Paleta de Colores y Base --- */
+        :root {
+            /* Colores extraídos e inspirados en tu logo */
+            --clr-primary: #6A40C4; /* Morado Vibrante */
+            --clr-accent: #FDE74C;  /* Amarillo Eléctrico */
+            --clr-bg: #F3F0F7;      /* Lavanda Pálido (Fondo) */
+            --clr-dark: #1A1A1A;      /* Negro Intenso */
+            --clr-white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--clr-bg);
+            color: var(--clr-dark);
+        }
+
+        /* --- Estilo Neo-Brutalista para Sombras y Botones --- */
+        .card-shadow {
+            /* Sombra Neo-Brutalista dura */
+            box-shadow: 8px 8px 0px var(--clr-dark);
+        }
+        
+        .card-shadow-hover {
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .card-shadow-hover:hover {
+            /* Animación de "sacudida" al pasar el mouse */
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px var(--clr-dark);
+        }
+        
+        .btn-brutalist {
+            @apply inline-block px-8 py-4 text-xl font-black text-center text-white bg-[var(--clr-primary)] border-4 border-[var(--clr-dark)] rounded-lg card-shadow card-shadow-hover;
+        }
+        
+        .btn-brutalist-accent {
+            @apply btn-brutalist bg-[var(--clr-accent)] text-[var(--clr-dark)];
+        }
+        
+        /* --- Animación de Marquee (Cinta de Ticker) --- */
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-ticker {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker 30s linear infinite;
+        }
+
+        /* --- Animaciones de Scroll Suave --- */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- 1. Encabezado Fijo -->
+    <header class="sticky top-0 z-50 bg-[var(--clr-white)] border-b-4 border-[var(--clr-dark)] shadow-[0px_6px_0px_rgba(0,0,0,0.05)]">
+        <nav class="container mx-auto flex flex-col md:flex-row items-center justify-between p-4">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <!-- Usamos la imagen que subiste -->
+                <img src="Logotipo Papelería Divertido Morado Amarillo (2).png" alt="Logo Papelart" class="h-16 w-16 rounded-full border-2 border-[var(--clr-dark)]">
+                <span class="text-4xl font-black tracking-tighter text-[var(--clr-primary)]">PAPELART</span>
+            </div>
+            
+            <!-- Navegación -->
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4 mt-4 md:mt-0">
+                <a href="#productos" class="block px-4 py-2 text-lg font-bold rounded-lg hover:bg-[var(--clr-accent)] focus:outline-none focus:ring-4 focus:ring-[var(--clr-accent)] focus:ring-opacity-50">Productos</a>
+                <a href="#pedidos" class="block px-4 py-2 text-lg font-bold rounded-lg hover:bg-[var(--clr-accent)] focus:outline-none focus:ring-4 focus:ring-[var(--clr-accent)] focus:ring-opacity-50">Pedidos</a>
+                <a href="#consultas" class="block px-4 py-2 text-lg font-bold rounded-lg hover:bg-[var(--clr-accent)] focus:outline-none focus:ring-4 focus:ring-[var(--clr-accent)] focus:ring-opacity-50">Consultas</a>
+                <a href="#redes" class="block px-4 py-2 text-lg font-bold rounded-lg hover:bg-[var(--clr-accent)] focus:outline-none focus:ring-4 focus:ring-[var(--clr-accent)] focus:ring-opacity-50">Redes</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 2. Sección Hero Principal -->
+    <main class="container mx-auto p-6 md:p-12">
+        <section class="text-center py-16 md:py-24">
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter uppercase scroll-animate">
+                Creatividad<br>
+                <span class="text-[var(--clr-primary)]">Sin Límites</span>
+            </h1>
+            <p class="max-w-2xl mx-auto mt-6 text-xl md:text-2xl font-medium text-gray-700 scroll-animate" style="transition-delay: 100ms;">
+                Desde impresiones y fotocopias hasta personalizaciones en DTF y grabado láser. 
+                <span class="font-bold text-[var(--clr-dark)]">Si lo podés imaginar, lo podemos crear.</span>
+            </p>
+            <div class="mt-12 flex flex-col sm:flex-row justify-center gap-6 scroll-animate" style="transition-delay: 200ms;">
+                <a href="#pedidos" class="btn-brutalist">¡Hacé tu Pedido!</a>
+                <a href="#productos" class="btn-brutalist-accent">Ver Trabajos</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 3. Ticker de Servicios (Marquee) -->
+    <section class="bg-[var(--clr-primary)] text-[var(--clr-white)] py-5 border-y-4 border-[var(--clr-dark)] overflow-hidden whitespace-nowrap">
+        <div class="inline-block">
+            <span class="animate-ticker text-3xl font-black uppercase">
+                &nbsp;✨ Sublimación • Grabado Láser • DTF • Remeras • Kepis • Impresiones • Fotocopias • Trabajos Personalizados
+            </span>
+            <span class="animate-ticker text-3xl font-black uppercase">
+                &nbsp;✨ Sublimación • Grabado Láser • DTF • Remeras • Kepis • Impresiones • Fotocopias • Trabajos Personalizados
+            </span>
+        </div>
+    </section>
+
+    <!-- 4. Sección de Productos -->
+    <section id="productos" class="container mx-auto p-6 md:p-12 py-20">
+        <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-center mb-16 scroll-animate">Nuestros Trabajos</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            
+            <!-- Producto 1: DTF -->
+            <div class="bg-[var(--clr-white)] border-4 border-[var(--clr-dark)] rounded-xl overflow-hidden card-shadow card-shadow-hover scroll-animate">
+                <img src="https://placehold.co/600x400/FDE74C/1A1A1A?text=Remera+DTF" alt="Remera con DTF" class="w-full h-64 object-cover border-b-4 border-[var(--clr-dark)]">
+                <div class="p-6">
+                    <h3 class="text-3xl font-black mb-2">Remeras y Telas (DTF)</h3>
+                    <p class="text-lg mb-4">La mejor tecnología para personalizar remeras, kepis y telas. Colores vibrantes que duran.</p>
+                    <div class="text-3xl font-black text-[var(--clr-primary)]"></div>
+                </div>
+            </div>
+
+            <!-- Producto 2: Grabado Láser -->
+            <div class="bg-[var(--clr-white)] border-4 border-[var(--clr-dark)] rounded-xl overflow-hidden card-shadow card-shadow-hover scroll-animate" style="transition-delay: 100ms;">
+                <img src="https://placehold.co/600x400/6A40C4/FFFFFF?text=Grabado+Láser" alt="Grabado Láser" class="w-full h-64 object-cover border-b-4 border-[var(--clr-dark)]">
+                <div class="p-6">
+                    <h3 class="text-3xl font-black mb-2">Grabado Láser</h3>
+                    <p class="text-lg mb-4">Precisión y elegancia en madera, metal, vidrio y más. Ideal para regalos únicos.</p>
+                    <div class="text-3xl font-black text-[var(--clr-primary)]">D</div>
+                </div>
+            </div>
+
+            <!-- Producto 3: Sublimación -->
+            <div class="bg-[var(--clr-white)] border-4 border-[var(--clr-dark)] rounded-xl overflow-hidden card-shadow card-shadow-hover scroll-animate" style="transition-delay: 200ms;">
+                <img src="https://placehold.co/600x400/1A1A1A/FDE74C?text=Sublimación" alt="Taza Sublimada" class="w-full h-64 object-cover border-b-4 border-[var(--clr-dark)]">
+                <div class="p-6">
+                    <h3 class="text-3xl font-black mb-2">Sublimación</h3>
+                    <p class="text-lg mb-4">Tazas, hoppies, remeras deportivas y más. Diseños full color que no se borran.</p>
+                    <div class="text-3xl font-black text-[var(--clr-primary)]"></div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- 5. Detalles (Bento Grid) -->
+    <section id="detalles" class="container mx-auto p-6 md:p-12 py-20">
+        <h2 class="text-5xl md:text-7xl font-black tracking-tighter text-center mb-16 scroll-animate">Servicios de Papelería</h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Impresiones -->
+            <div class="lg:col-span-2 p-8 bg-[var(--clr-accent)] border-4 border-[var(--clr-dark)] rounded-xl card-shadow scroll-animate">
+                <h3 class="text-4xl font-black mb-3">Impresiones y Fotocopias</h3>
+                <p class="text-lg">Calidad profesional para tus trabajos, documentos y fotos. Blanco y negro o full color, alta velocidad y definición.</p>
+            </div>
+            
+            <!-- Trabajos Personalizados -->
+            <div class="p-8 bg-[var(--clr-primary)] text-white border-4 border-[var(--clr-dark)] rounded-xl card-shadow scroll-animate" style="transition-delay: 100ms;">
+                <h3 class="text-4xl font-black mb-3">Personalizados</h3>
+                <p class="text-lg">Hacemos realidad tu idea. Regalos empresariales, souvenirs, ¡lo que necesites!</p>
+            </div>
+            
+            <!-- Anillados y más -->
+            <div class="lg:col-span-3 p-8 bg-[var(--clr-white)] border-4 border-[var(--clr-dark)] rounded-xl card-shadow scroll-animate" style="transition-delay: 200ms;">
+                <h3 class="text-4xl font-black mb-3">Anillados, Plastificados y Más</h3>
+                <p class="text-lg">Todo para la oficina o la facultad. Dale a tus trabajos la terminación profesional que merecen.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 6. Espacio para Pedidos -->
+    <section id="pedidos" class="bg-[var(--clr-accent)] py-20 border-y-4 border-[var(--clr-dark)]">
+        <div class="container mx-auto p-6 md:p-12">
+            <div class="bg-[var(--clr-white)] max-w-3xl mx-auto border-4 border-[var(--clr-dark)] rounded-xl card-shadow scroll-animate">
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter text-center p-8 border-b-4 border-[var(--clr-dark)]">Hacé tu Pedido</h2>
+                <!-- Se cambió el action y se agregó el listener onSubmit para JS -->
+                <form class="p-8 space-y-6" id="form-pedido" onsubmit="enviarPedidoWhatsApp(event)">
+                    <div>
+                        <label for="nombre" class="block text-lg font-bold mb-2">Tu Nombre</label>
+                        <!-- Se agregó el atributo 'required' -->
+                        <input type="text" id="nombre" name="nombre" required class="w-full p-4 text-lg border-4 border-[var(--clr-dark)] rounded-lg focus:outline-none focus:ring-4 focus:ring-[var(--clr-primary)] focus:ring-opacity-50" placeholder="Ej: Juan Pérez">
+                    </div>
+                    <div>
+                        <label for="telefono" class="block text-lg font-bold mb-2">Tu WhatsApp</label>
+                        <!-- Se agregó el atributo 'required' -->
+                        <input type="tel" id="telefono" name="telefono" required class="w-full p-4 text-lg border-4 border-[var(--clr-dark)] rounded-lg focus:outline-none focus:ring-4 focus:ring-[var(--clr-primary)] focus:ring-opacity-50" placeholder="0981 123 456">
+                    </div>
+                    <div>
+                        <label for="detalle" class="block text-lg font-bold mb-2">Detalle del Pedido</label>
+                        <!-- Se agregó el atributo 'required' -->
+                        <textarea id="detalle" name="detalle" rows="6" required class="w-full p-4 text-lg border-4 border-[var(--clr-dark)] rounded-lg focus:outline-none focus:ring-4 focus:ring-[var(--clr-primary)] focus:ring-opacity-50" placeholder="Describí tu idea lo más detallado posible. ¿Qué producto es? ¿Qué cantidad? ¿Para cuándo lo necesitás?"></textarea>
+                    </div>
+                    <div>
+                        <label for="archivo" class="block text-lg font-bold mb-2">Adjuntá tu Diseño (Opcional)</label>
+                        <!-- Importante: El archivo adjunto no se envía por WhatsApp, pero se mantiene la opción para que el usuario sepa que puede adjuntarlo luego por chat. -->
+                        <input type="file" id="archivo" name="archivo" class="w-full p-3 text-lg border-4 border-dashed border-[var(--clr-dark)] rounded-lg file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-lg file:font-bold file:bg-[var(--clr-accent)] file:text-[var(--clr-dark)] hover:file:bg-[var(--clr-primary)] hover:file:text-white">
+                    </div>
+                    <div class="text-center pt-4">
+                        <button type="submit" class="btn-brutalist w-full md:w-auto">
+                            Enviar Pedido
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Contenedor para el mensaje de éxito (Invisible al inicio) -->
+                <div id="success-message" class="hidden p-6 text-center bg-green-100 text-green-800 border-t-4 border-green-500">
+                    <p class="font-bold">¡Genial! Redirigiendo a WhatsApp...</p>
+                    <p class="text-sm">Si no se abre automáticamente, revisá si tu navegador bloqueó la ventana.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Consultas (WhatsApp) -->
+    <section id="consultas" class="container mx-auto p-6 md:p-12 py-20 text-center">
+        <h2 class="text-5xl md:text-7xl font-black tracking-tighter mb-6 scroll-animate">¿Tenés dudas?</h2>
+        <p class="max-w-xl mx-auto text-xl md:text-2xl font-medium mb-10 scroll-animate" style="transition-delay: 100ms;">
+            ¡Es más rápido por WhatsApp! Escribinos y te cotizamos al instante.
+        </p>
+        <!-- ATENCIÓN: Cambiar el número 5959811597301 por el número de WhatsApp de Papelart -->
+        <a href="https://wa.me/595981597501" target="_blank" class="btn-brutalist inline-flex items-center gap-3 bg-green-500 text-white scroll-animate" style="transition-delay: 200ms;">
+            <!-- Icono de WhatsApp (SVG) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.451-4.437-9.887-9.889-9.888-5.451 0-9.887 4.434-9.889 9.886-.001 2.269.655 4.398 1.907 6.18l-1.335 4.877 4.899-1.332z"/></svg>
+            Chatear por WhatsApp
+        </a>
+    </section>
+
+    <!-- 8. Footer (Redes Sociales) -->
+    <footer id="redes" class="bg-[var(--clr-dark)] text-[var(--clr-white)] border-t-8 border-[var(--clr-accent)] p-12">
+        <div class="container mx-auto text-center">
+            <h3 class="text-4xl font-black mb-8">Seguinos en las Redes</h3>
+            <div class="flex justify-center gap-6">
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/23.papel.art" target="_blank" class="w-20 h-20 bg-[var(--clr-white)] text-[var(--clr-dark)] border-4 border-[var(--clr-dark)] rounded-lg flex items-center justify-center card-shadow-hover card-shadow hover:bg-[var(--clr-accent)]" title="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                
+                <!-- TikTok (Ejemplo) -->
+                <a href="http://tiktok.com/@leandro_orrego" target="_blank" class="w-20 h-20 bg-[var(--clr-white)] text-[var(--clr-dark)] border-4 border-[var(--clr-dark)] rounded-lg flex items-center justify-center card-shadow-hover card-shadow hover:bg-[var(--clr-accent)]" title="TikTok">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 6.5C16.5 8.985 14.485 11 12 11s-4.5-2.015-4.5-4.5S9.515 2 12 2s4.5 2.015 4.5 4.5zM8.5 11H12v8.5a4 4 0 1 0 4-4"></path></svg>
+                </a>
+                
+                <!-- Facebook (Ejemplo) -->
+                <a href="#" target="_blank" class="w-20 h-20 bg-[var(--clr-white)] text-[var(--clr-dark)] border-4 border-[var(--clr-dark)] rounded-lg flex items-center justify-center card-shadow-hover card-shadow hover:bg-[var(--clr-accent)]" title="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+            </div>
+            
+            <p class="mt-12 text-gray-400">
+                &copy; <span id="year"></span> Papelart. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Script para animaciones de scroll, año y manejo de formulario -->
+    <script>
+        // Número de WhatsApp de destino (¡CAMBIAR POR EL REAL!)
+        const WHATSAPP_NUMBER = "595981597501";
+
+        function enviarPedidoWhatsApp(event) {
+            // Previene el envío normal del formulario (que recargaría la página)
+            event.preventDefault();
+
+            // 1. Obtener valores de los campos
+            const nombre = document.getElementById('nombre').value;
+            const telefono = document.getElementById('telefono').value;
+            const detalle = document.getElementById('detalle').value;
+            const archivoInput = document.getElementById('archivo');
+            
+            // Verificamos si hay un archivo adjunto
+            const archivoAdjunto = archivoInput.files.length > 0 
+                ? `\n\n(Se adjuntó un archivo. Lo enviaré a continuación en este chat.)` 
+                : '';
+
+            // 2. Construir el mensaje URL-encodeado
+            const mensajeRaw = 
+                `¡Hola Papelart! 👋\n` +
+                `Quiero hacer un pedido desde el sitio web.\n\n` +
+                `👤 *Nombre:* ${nombre}\n` +
+                `📱 *Contacto:* ${telefono}\n\n` +
+                `📦 *Detalle del Pedido:*\n${detalle}` +
+                `${archivoAdjunto}`;
+            
+            const mensajeEncoded = encodeURIComponent(mensajeRaw);
+            
+            // 3. Construir el enlace de WhatsApp
+            const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensajeEncoded}`;
+
+            // 4. Mostrar mensaje de éxito y redirigir
+            document.getElementById('success-message').classList.remove('hidden');
+            
+            // Redirigir después de un pequeño retraso
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank');
+                // Opcional: limpiar el formulario
+                document.getElementById('form-pedido').reset(); 
+                document.getElementById('success-message').classList.add('hidden');
+            }, 1000); 
+            
+            // Nota: El archivo físico debe ser enviado manualmente por el usuario en WhatsApp, 
+            // ya que la API de wa.me no permite adjuntar archivos directamente desde el formulario.
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Animación de Scroll ---
+            const scrollElements = document.querySelectorAll('.scroll-animate');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Animar solo una vez
+                    }
+                });
+            }, {
+                threshold: 0.1 // Activar cuando el 10% del elemento esté visible
+            });
+
+            scrollElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // --- Año del Footer ---
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
